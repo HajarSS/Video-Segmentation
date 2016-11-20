@@ -91,16 +91,16 @@ clear nonZind clustIDX;
 labels= reshape(labels,t,row); % No.frames x No.pixels per frame
 numLines= 0;
 mask= zeros(1,row);
-fid = fopen('11-motionRGB-docList.dat', 'wt');
+fid = fopen('11-motionRGB-docList.dat', 'wt'); % input to LDA
 for i=1:row
     fprintf('Writing in file, Pixel: %i ...\n',i);
     if(labels(:,i)==0) 
         continue;
     end
     
-    for j=1:t
+    for j=1:t % t: num of frames
         if(labels(j,i)>0)
-            fprintf(fid,[num2str(labels(j,i)),' ']); 
+            fprintf(fid,[num2str(labels(j,i)),' ']);  % write in the file
         end
     end
           
